@@ -1,44 +1,56 @@
-/*VARIABLES
+/*   .------------------------------------------.
+ *  /                                            \
+ *                VARIABLES.SCSS
+ *  \                                            /
+ *   '------------------------------------------'
+*/
+//IMPORTS
+//N/A
 
-CONTENTS.......... global variables
-BREAKPOINTS.......
-    Fullscreen (min-width: 1200px)
-    Desktop (min-width: 1025px){
-    Tablet-Narrow (min-width: 768px)
-    Tablet-Wide (min-width: 768px) and (max-width: 1024px)
-    Mobile (min-width: 640px)
+/* CONTENTS (update lines as this file grows)
+ *      Colors...................... line 21
+ *      Fonts.......................
+ *      Grid........................
+ *      Buttons.....................
+ *      Breakpoints.................
+ *      
+*/
+
 
 /**********************
 COLORS
 **********************/
-$primary-color: #61dafb;
+$react-blue: #61dafb;
+$dark-blue: #0084a8;
+$white: #FFFFFF;
+$light-grey: #cbcbcb;
+$meds-grey: #888888;
+$dark-grey: #646464;
 
 
 /**********************
-BUTTONS
+FONT
 **********************/
+$ff-d: Arial, Helvetica, sans-serif;
+$fs-d: 16px;
+$fw-d: 200;
+
+$h1: 3em;
+$h2: 2em;
+$h3: 1.6em;
 
 
 /**********************
 BREAKPOINTS
 **********************/
-$min-fullscreen: 1200px;
-$min-desktop: 1025px;
-$min-tablet: 768px;
-$min-mobile: 640px;
-
-/**********************
-BACKGROUNDS
-**********************/
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
 
 
-/**********************
-SVGS
-**********************/
 
-
-/**********************
-GRID
-**********************/
 
 

@@ -1,0 +1,75 @@
+/*   .------------------------------------------.
+ *  /                                            \
+ *                 GLOBAL.SCSS
+ *  \                                            /
+ *   '------------------------------------------'
+*/
+//IMPORTS
+@import 'variables.scss';
+@import '~/mixins/_mixins.scss';
+
+/* CONTENTS (update lines as this file grows)
+ *      elements.............................
+ *      buttons..............................
+ *      form groups/inputs...................
+ * 
+*/
+
+
+/********************************************
+ELEMENTS
+********************************************/
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-size: $fs-d;
+        font-family: $ff-d;
+        
+        h1{
+            font-size: $h1;
+        }
+
+        h2{
+            font-size: $h2;
+        }
+
+        h3{
+            font-size: $h3;
+        }
+    }
+}
+
+
+
+/********************************************
+BUTTONS
+********************************************/
+button, a {
+    cursor: pointer;
+
+    &.btn {
+        padding: 2em 1em;
+
+        & .btn-primary {
+            @include colorScheme($react-blue,#000000);
+
+            &:hover{
+                @include colorScheme($dark-blue,#FFFFFF);
+            }
+        }
+
+        & .btn-secondary {
+            @include colorScheme($med-grey,#000000);
+
+            &:hover{
+                @include colorScheme($dark-grey,#FFFFFF);
+            }
+        }
+    }
+}

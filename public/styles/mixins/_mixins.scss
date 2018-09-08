@@ -1,0 +1,162 @@
+/*   .------------------------------------------.
+ *  /                                            \
+ *                  MIXINS.SCSS
+ *  \                                            /
+ *   '------------------------------------------'
+*/
+//IMPORTS
+ @import '../variables.scss';
+
+/* CONTENTS (update lines as this file grows)
+ *      media queries.......................
+ *      background/gradients................
+ *      browser compatibility hacks.........
+ * 
+*/
+
+
+/********************************************
+MEDIA QUERIES (Examples at the bottom)
+********************************************/
+//above a point
+@mixin media-min($min) {
+    @if map-has-key($breakpoints-list, $min) {
+        $bp: map-get($breakpoints-list, $min);
+
+        @media screen and (min-width: $bp) {
+            @content;
+        }
+    } 
+    @else {
+        @warn 'Invalid breakpoint: #{$min}.';
+    }
+}
+
+//below a point
+@mixin media-max($max) {
+    @if map-has-key($breakpoints-list, $max) {
+        $bp: map-get($breakpoints-list, $max);
+
+        @media screen and (max-width: $bp) {
+            @content;
+        }
+    } 
+    @else {
+        @warn 'Invalid breakpoint: #{$max}.';
+    }
+}
+
+//between ponints
+@mixin media-minMax($min,$max) {
+    @if map-has-key($breakpoints-list, $min) && map-has-key($breakpoints-list, $max){
+        $bpMin: map-get($breakpoints-list, $min);
+        $bpMax: map-get($breakpoints-list, $max);
+        @media screen and (min-width: $bpMin) and (max-width: $bpMax){
+            @content;
+        }
+    }
+    @else {
+        @warn 'Invalid breakpoint(s): #{$min} or #{$max}.';
+    }
+}
+
+
+/********************************************
+COLOR / GRADIENTS
+********************************************/
+//for background / gradients
+@mixin background($bg){
+    @if type_of($bg) == 'color' {
+        background: $bg;
+    }
+    @else if type_of($bg) == 'string' {
+        background: -moz-linear-gradient(#{$bg}); /* FF3.6-15 */
+        background: -webkit-linear-gradient(#{$bg}); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(#{$bg}); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    @else {
+        @warn "#{$bg} Must enter a color, ie. bg(red) or bg(#FF0000) || a gradient string, ie. bg('to bottom, #FFFFFF, #FF0000')";
+    }
+}
+
+//for text/background combinations
+@mixin colorScheme($bg,$txt){
+    @if type_of($bg) == 'color' && type_of($txt) == 'color'{
+        @include background($bg);
+        color: $txt;
+    }
+    @else if type_of($bg) == 'string' && type_of($txt) == 'color' {
+        @include background($bg);
+        color: $txt;
+    }
+    @else {
+        @warn "Something went wrong. #{$bg} Must enter a color || a gradient string & #{$txt} must be a color";
+    }
+}
+
+
+/********************************************
+BROWSER COMPATIBILITY HACKS
+********************************************/
+
+//Chrome targeting
+@mixin chromeHack(){
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        @content;
+    }
+}
+
+//Firefox 3.6+ targeting
+@mixin mozHack(){
+    @media screen and (-moz-images-in-menus:0) {
+        @content;
+    }
+}
+
+//IE10+ targeting
+@mixin ieHack(){
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Move to documentation at some point - CR
+/********************************************
+MIXIN EXAMPLES
+*********************************************
+
+* MIN WIDTH QUERY do things above this point.
+    media-min(lg){
+        div {
+            display: inline-block;
+        }
+    }
+
+* MAX WIDTH QUERY do things below this point.
+    media-max(sm){
+        div {
+            display: block;
+        }
+    }
+    
+* MIN and MAX QUERY do things between these points.
+    media-minMax(sm,md){
+        div {
+            display: block;
+        }
+    }
+    
+*/
