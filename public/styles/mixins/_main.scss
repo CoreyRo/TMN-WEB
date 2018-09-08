@@ -1,0 +1,18 @@
+/*MIXINS
+
+CONTENTS.......... global mixins
+BREAKPOINTS.......
+    Fullscreen (min-width: 1200px)
+    Desktop (min-width: 1025px){
+    Tablet-Narrow (min-width: 768px)
+    Tablet-Wide (min-width: 768px) and (max-width: 1024px)
+    Mobile (min-width: 640px)
+
+/**********************
+MIXINS
+**********************/
+@mixin media-query($min: 1025){
+    @media screen and (min: $min){
+        
+    }
+}
